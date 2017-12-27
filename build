@@ -58,11 +58,7 @@ make altbininstall
 
 unset LD_RUN_PATH
 
-# Install pip, ensuring that setuptools and wheel packages are up to
-# date. Also create symlinks for non versioned and major version of
-# python and pip programs. We are assuming here that python program
-# should always map to Python 3 and that Python 2 would be the alternate
-# Python installation.
+# Install pip and ensure setuptools and wheel packages are up to date.
 
 cd $DEST_DIR/bin
 
@@ -74,7 +70,7 @@ pip$XY install --no-cache-dir -U setuptools wheel
 
 # Install minimal packages to support running Jupyter notebooks.
 
-pip$XY install "notebook==5.2.*" "jupyterhub==0.8.*" "ipykernel==4.7.*"
+pip$XY install --no-cache-dir "notebook==5.2.*" "jupyterhub==0.8.*"
 
 # Remove tests and compiled Python files to try and reduce the size
 # of the image. We are going to be running long lived process so not
